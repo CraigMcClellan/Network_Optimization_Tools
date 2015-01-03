@@ -17,14 +17,13 @@ def SPA_Dijkstra(SourceNode_arg, AdjArray_arg):
         InfDist = 32000         #This is a VLN (Very Large Number) distance used to set the initial distances of each node; 
                                 #It is 32k because of the size limitation of integers 
         
-        SouceNode_arg = SourceNode_arg # insurance        
 
         DistArray_arg = defaultdict(int) 
-        PredArray_arg = defaultdict(int)       
+        PredArray_arg = defaultdict(SinglyLinkedListItem)       
 
         for nodes in AdjArray_arg.data.keys():
                 DistArray_arg[nodes] = InfDist  # Distance(i) = VLN for all i in N
-                PredArray_arg[nodes] = -1       # Pred(i) = -1 for all i in N         
+                #PredArray_arg[nodes] = None       # Pred(i) = -1 for all i in N         
                 
         S = SinglyLinkedList()   # S = {} 
         S_Prime = SinglyLinkedList() #Both S and S' are SinglyLinkedLists where AdjArray.data is an "array" of lists                                                     
@@ -34,7 +33,7 @@ def SPA_Dijkstra(SourceNode_arg, AdjArray_arg):
         #S_Prime = [int(i) for i in S_Prime]
         
         DistArray_arg[SourceNode_arg] = 0       # Distance(Source) = 0
-        PredArray_arg[SourceNode_arg] = 0       # Predecessor(Source) = 0
+        #PredArray_arg[SourceNode_arg] = None      # Predecessor(Source) = 0
  
         while S.Count < AdjArray_arg.Count:       # Main Loop
                 
@@ -55,7 +54,7 @@ def SPA_Dijkstra(SourceNode_arg, AdjArray_arg):
                 while not MyListItem is None:
                         if DistArray_arg[MyListItem.HeadNode] > DistArray_arg[MinListItem.HeadNode] + MyListItem.ArcCost: #if D(j) > D(i) + c(i,j)
                                 DistArray_arg[MyListItem.HeadNode] = DistArray_arg[MinListItem.HeadNode] + MyListItem.ArcCost #then D(j) = D(i) + c(i,j)  
-                                PredArray_arg[MyListItem.HeadNode] = MinListItem.HeadNode # Predecessor(j) = i
+                                PredArray_arg[MyListItem.HeadNode] = MinListItem # Predecessor(j) = i
                         MyListItem = MyListItem.NextItem                                   
                 
         return DistArray_arg, PredArray_arg 

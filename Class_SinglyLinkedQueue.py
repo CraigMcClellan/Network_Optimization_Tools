@@ -17,7 +17,7 @@
 
 class SinglyLinkedQueueItem(object):
 
-        def __init__(self, slqi_Node = None, slqi_Label = None, slqi_NextItem = None):
+        def __init__(self, slqi_Node, slqi_Label = None, slqi_NextItem = None):
                 self.Node = slqi_Node
                 self.Label = slqi_Label 
                 self.NextItem = slqi_NextItem             
@@ -63,15 +63,15 @@ class SinglyLinkedQueue(object):
                 self.qCount = 0 # C
 
         def IsEmpty(self):
-                if not self.qFront is None:
-                        return False
-                elif not self.qRear is None:
-                        return False
-                else:
+        
+                if self.qFront is None and self.qRear is None:
                         return True
+                else:
+                        return False
         
         def Remove(self):
-                if self.IsEmpty: # If the queue is empty return None
+                if self.IsEmpty(): # If the queue is empty return None
+                        print("Error - Trying to .Remove from an empty Queue!")
                         __TempPointer =  None
                 else: 
                         __TempPointer = self.qFront
@@ -80,14 +80,14 @@ class SinglyLinkedQueue(object):
                                 self.qRear = None
                         else: # If more than one item
                                 self.qFront = self.qFront.NextItem
-                self.qCount -= 1
+                        self.qCount -= 1
                 return __TempPointer    
 
-        def Add( _EndNode, Data_Label = None):
+        def Add(self, _EndNode, Data_Label = None):
         
                 qNew = SinglyLinkedQueueItem( _EndNode, Data_Label) # Create new Queue Item
 
-                if self.IsEmpty: 
+                if self.IsEmpty(): 
                         self.qFront = qNew
                         self.qRear = qNew
                 else:
@@ -95,6 +95,15 @@ class SinglyLinkedQueue(object):
                         self.qRear = qNew
 
                 self.qCount += 1
+
+        def qPrint(self):
+
+                print("Singly Linked Queue :", end = " ")
+                slqi_MyQueueItem = self.qFront
+                while not slqi_MyQueueItem is None:
+                        print(slqi_MyQueueItem.Node, end = " ")
+                        slqi_MyQueueItem = slqi_MyQueueItem.NextItem
+                print("\n")
 
         def __Terminate__(self):
                 self.qFront = None

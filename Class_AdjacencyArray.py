@@ -1,4 +1,4 @@
-from collections import defaultdict
+from collections import defaultdict 
 import csv # Comma Seperated Variable Module
 from Class_SinglyLinkedList import *
 
@@ -51,7 +51,7 @@ class AdjacencyArray(object):
                                 AdjArray_var[ParsedLine[0]].AddItem(ParsedLine[1], int(ParsedLine[2]), int(Parsed[3])) 
                         else:                        
                                 raise ValueError("Error Data Size in Data File")
-
+                        
                 self.data = AdjArray_var   
 
                 self.Count = len(AdjArray_var)  

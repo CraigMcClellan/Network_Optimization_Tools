@@ -2,7 +2,7 @@
 """     This is a class for a Singly Linked List Item  data structure.  
         It is initialized by OPTIONALLY passing the Head Node, Edge/Arc Cost, the UpperCapacity of the Edge/Arc,
         and the Next List Item.  It is modified code from "VBA Developer's Handbook, 2nd Edition" by Ken Getz 
-        and Mike Gilbert, Sybex, 2001. This code was given to me by Professor Steven Charbonneau for the course OR 643
+        and Mike Gilbert, Sybex, 2001. The VBA code was given to me by Professor Steven Charbonneau for the course OR 643
         Network Optimization.  It is adapted from the VBA code for that course. 
 
         Also used these websites to understand SLLIs in Python :

@@ -7,6 +7,35 @@ from collections import defaultdict
         This routine takes an adjacency array, and returns whether a network is cyclic (True if it is cyclic)
         and returns the topological order of the network optionally.
 
+        Algorithm From Network Flows: Ravindra K. Ahuja; Thomas L. Magnanti; James B. Orlin
+
+        ISBN: 978-0-13-617549-0
+
+        START
+	Initialize InDegree(i) = 0
+	For (i,j) in A(i); InDegree(j) = InDegree(j) + 1
+	List = {}
+	next =  0
+	FOR all i in N 
+		IF InDegree(i) = 0 THEN List = List in {i}
+	NEXT i
+	DO WHILE List <> {}
+		select  node i from List and delete it
+		next = next + 1
+		order(i) = next
+		FOR  (i, j) in A(i)
+			InDegree(j) = InDegree(j) - 1
+			IF InDegree(j) = 0 THEN List = List in {j}
+		NEXT (i,j)
+	 LOOP
+	IF next < n THEN 
+		Network contains a directed cycle
+	ELSE
+		Network is acyclic and order() contains topological order
+	ENDIF
+END
+
+
 """
 
 def Topological_Sort(MyAdjArray):
@@ -46,6 +75,8 @@ def Topological_Sort(MyAdjArray):
         #Returned Results
         if NextCounter < MyAdjArray.Count:
                 IsCyclic_arg = True
+        else:
+                IsCyclic_arg = False
  
         return IsCyclic_arg, OrderList_arg
                 

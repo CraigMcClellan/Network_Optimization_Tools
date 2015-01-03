@@ -27,7 +27,7 @@ def main():
 
         print("----------- Results ---------- \n \n")
         for node in XArray.data.keys():
-                print("From Source Node ", MySourceNode," to Node(", node, ") - Dist:", Dist_Array[node]," Pred:", Pred_Array[node])
+                print("From Source Node ", MySourceNode," to Node(", node, ") - Dist:", Dist_Array[node]," Pred:", Pred_Array[node].HeadNode)
    
 
 
