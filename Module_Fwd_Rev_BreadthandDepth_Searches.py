@@ -32,26 +32,26 @@ def FSearchB(SourceNode_arg, AdjArray_arg):
         OrderArray_arg = defaultdict(int)
 
         # Initializing variables and data structures       
-         for node in AdjArray_arg.data.keys():
+        for node in AdjArray_arg.data.keys():
                 MarkedArray_arg[node] = False
-                CurrentArc[node] = AdjArray.data[node].GetListHead
+                CurrentArc[node] = AdjArray_arg.data[node].GetListHead
 
         MarkedArray_arg[SourceNode_arg] = True #Mark node s
         myNext = 1 #Next = 1
-        OrderArray_arg[SourceNode_arg] = myNext #Order = 1
-        # Not instantiating PredArray_arg[SourceNode_arg] will make it None(?)
-        PredArray_arg[SourceNode_arg]
+        OrderArray_arg[SourceNode_arg] = myNext #Order = 1      
         
         # Building the initial queue
         MyQueue = SinglyLinkedQueue()
         MyQueue.Add(SourceNode_arg) # List = s  
+        PredArray_arg[SourceNode_arg] = SinglyLinkedQueueItem(None)
 
         # Main Loop
-        while not MyQueue.IsEmpty(): # Do while List <> {}
+        i = 0
+        while not MyQueue.IsEmpty() and i < 1000: # Do while List <> {}
                 iNode = MyQueue.qFront # Select node i
                 jNode = CurrentArc[iNode.Node]
                 if not jNode is None:
-                        if MarkedArray_arg[jNode.HeadNode] = False: # If node i is incident to an admissible arc (i,j) then
+                        if MarkedArray_arg[jNode.HeadNode] == False: # If node i is incident to an admissible arc (i,j) then
                                 MarkedArray_arg[jNode.HeadNode] = True # Mark node j
                                 PredArray_arg[jNode.HeadNode] = iNode # Predecessor(j) = i
                                 myNext += 1 # next = next + 1
@@ -59,6 +59,7 @@ def FSearchB(SourceNode_arg, AdjArray_arg):
                                 MyQueue.Add(jNode.HeadNode)
                         CurrentArc[iNode.Node] = CurrentArc[iNode.Node].NextItem
                 else:
-                        MyQueue.Remove
+                        MyQueue.Remove()
+                i += 1
 
         return MarkedArray_arg, PredArray_arg, OrderArray_arg                
