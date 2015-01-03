@@ -6,7 +6,7 @@ from Class_SinglyLinkedList import *
 """    
         Implementation of Dijkstra's Shortest Path Algorithm to find the shortest path
         from a Source Node to all other nodes in a network.  This is the most least efficient
-        implementation using only Lists 
+        implementation using only Singly Linked Lists. 
 
         This implementation is done using Singly Linked Lists and My own Adjacency Array Class. 
 """
