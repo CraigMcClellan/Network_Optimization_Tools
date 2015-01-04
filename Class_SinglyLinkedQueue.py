@@ -1,6 +1,6 @@
 # SinglyLinkedQueueItem Class
-"""     This is a class for a Singly Linked Queue Item (aka Node) data structure.  
-        It is initialized by OPTIONALLY passing a Singly Linked Queue Item Node, an Optional Label, 
+"""     This is a class for a Singly Linked Queue Item data structure.  
+        It is initialized by OPTIONALLY passing a Node name, an Optional Label, 
         and an optional Next List Item.  It is modified code from "VBA Developer's Handbook, 2nd Edition" by Ken Getz 
         and Mike Gilbert, Sybex, 2001. This code was given to me by Professor Steven Charbonneau for the course OR 643
         Network Optimization.  It is adapted by me from the VBA code for that course. 
